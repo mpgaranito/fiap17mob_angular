@@ -9,8 +9,14 @@ export class UsersService {
   constructor(
     private http: HttpClient,
     private db: AngularFirestore
-  ) {}
+  ) { }
 
+
+  getUsers() {
+    
+    return this.db.collection(
+      'users').get();
+      }
   getById(id: string) {
     return this.db.collection(
       'users', ref => ref.where('id', '==', id)

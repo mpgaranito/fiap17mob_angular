@@ -1,3 +1,8 @@
 <div>
-  Oi oi
+  <li *ngFor="let dado of dados">
+    <a href="/user/{{dado.id}}">Vai</a>
+    <span>{{dado.id}}</span>  
+    <span>{{dado.name}}</span>  
+  </li>
+
 </div>
