@@ -10,10 +10,10 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 })
 export class UserPage {
   userForm = new FormGroup({
-    name: new FormControl('name', Validators.required),
-    age: new FormControl('age', Validators.required),
-    email: new FormControl('email', Validators.required),
-    phone: new FormControl('phone', Validators.required)
+    name: new FormControl('', Validators.required),
+    age: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required)
 
   });
     private loading: boolean  = false;
