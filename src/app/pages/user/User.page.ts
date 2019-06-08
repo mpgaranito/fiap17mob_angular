@@ -19,22 +19,28 @@ export class UserPage {
   constructor(
     private route: ActivatedRoute,
     private usersService: UsersService
-  ) {}
+  ) { }
   
+  ngOnInit() {
+    this.userId = this.route.snapshot.paramMap.get('id');
+    if(this.userId) this.getUser(this.userId); 
+  }
+   
   private getUser(id: string) {
 
   this.usersService.getById(id)
     .subscribe((data: any) => {
+      const result = data[0].payload.doc.data();
+     Object.keys(result).filter(item=>item!=='id').forEach((item) => {
+      debugger
+       this.userForm.controls[item].setValue(result[item]);
+     });
       // this.data = data[0].payload.doc.data();
       console.log('getid', id);
     });
   }
 
-  ngOnInit() {
-    this.userId = this.route.snapshot.paramMap.get('id');
-    this.getUser(this.userId); 
-  }
-   
+ 
   createUser() {
     console.log(this.userForm);
       return;
