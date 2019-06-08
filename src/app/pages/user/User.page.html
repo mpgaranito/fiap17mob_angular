@@ -1,7 +1,10 @@
 <div>
   <loading-component [show]="loading"></loading-component>
-  <form [formGroup]="userForm" (ngSubmit)="createUser()" >
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
   <input type="text" name="name" formControlName="name" />
+  <input type="text" name="age" formControlName="age" />
+  <input type="text" name="email" formControlName="email" />
+  <input type="text" name="phone" formControlName="phone" />
   <div *ngIf="userForm.controls.name.invalid&&userForm.controls.name.touched">
     O campo nome é obrigatório
   </div>

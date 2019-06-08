@@ -16,7 +16,13 @@ export class UsersService {
       'users', ref => ref.where('id', '==', id)
     ).snapshotChanges() ;
   }
-
+  update(docId:string, data) {
+    return this.db.collection('users').doc(docId).set({
+      id: uuid(),
+      ...data,
+    });
+  }
+  
   create(data) {
     return this.db.collection('users').add({
       id: uuid(),
