@@ -1,40 +1,50 @@
 import { Component } from '@angular/core';
-
 import { UsersService } from '../../services/Users.service';
-
-import { LoadingComponent } from '../../components/loading/Loading.components';
+import { ActivatedRoute } from '@angular/router';
+import { FormGroup,FormControl,Validators } from '@angular/forms'
 
 @Component({
-    templateUrl: './User.page.html',
-    styleUrls: ['./User.page.css']
+  templateUrl: './User.page.html',
+  styleUrls: ['./User.page.css']
 })
+export class UserPage {
+  userForm = new FormGroup({
+    name: new FormControl('name', Validators.required)
+  });
+  private loading: boolean  = false;
+ // private data: object = {};
+  private userId: string ="";
 
-export class UserPage { 
 
-    private loading: boolean = false;
+  constructor(
+    private route: ActivatedRoute,
+    private usersService: UsersService
+  ) {}
+  
+  private getUser(id: string) {
 
-    constructor(private usersService: UsersService){}
+  this.usersService.getById(id)
+    .subscribe((data: any) => {
+      // this.data = data[0].payload.doc.data();
+      console.log('getid', id);
+    });
+  }
 
-    createUser() {
-
-        this.loading = true;
-        
-        this.usersService.create({
-        
-            name: "anderson",
-            email: "anderltda@gmail.com",
-            age: 36,
-            phone: "+5511989035599",
-        
-        }).then((data) => {
-        
-            console.log('result', data);
-            this.loading = false;
-        
-        }).catch((err) => {
-        
-            console.log(err);
-        
-        });
-    }
+  ngOnInit() {
+    this.userId = this.route.snapshot.paramMap.get('id');
+    this.getUser(this.userId); 
+  }
+   
+  createUser() {
+    console.log(this.userForm);
+      return;
+    this.loading = true;
+    this.usersService.create({
+      name: 'marcos',
+      email: 'marcos@gmail.com',
+      age: 36,
+      phone: '+1111111111'
+    }).then(() => this.loading = false)
+      .catch((err) => this.loading = false);
+  }
 }

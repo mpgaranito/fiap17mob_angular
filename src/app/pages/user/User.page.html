@@ -1,6 +1,12 @@
 <div>
-    <loading-component [show]="loading"></loading-component>
-    <button (click)="createUser()">
-        Criar
-    </button>
+  <loading-component [show]="loading"></loading-component>
+  <form [formGroup]="userForm" (ngSubmit)="createUser()" >
+  <input type="text" name="name" formControlName="name" />
+  <div *ngIf="userForm.controls.name.invalid&&userForm.controls.name.touched">
+    O campo nome é obrigatório
+  </div>
+  <button type="submit" [disabled]="!userForm.valid" >
+    Criar
+  </button>
+</form>
 </div>

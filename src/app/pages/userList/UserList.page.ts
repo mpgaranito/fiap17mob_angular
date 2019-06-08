@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: './UserList.page.html',
-    styleUrls: ['./UserList.page.css']
+  templateUrl: './UserList.page.html',
+  styleUrls: ['./UserList.page.css']
 })
-
-export class UserListPage { }
+export class UserListPage {}
