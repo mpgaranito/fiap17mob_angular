@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { UsersService } from '../../services/Users.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup,FormControl,Validators } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
 @Component({
   templateUrl: './User.page.html',
@@ -15,14 +16,15 @@ export class UserPage {
     phone: new FormControl('phone', Validators.required)
 
   });
-  private loading: boolean  = false;
- // private data: object = {};
+    private loading: boolean  = false;
+
     private userId: string = "";
     private docID: string = "";
 
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private usersService: UsersService
   ) { }
   
@@ -35,23 +37,21 @@ export class UserPage {
 
   this.usersService.getById(id)
     .subscribe((data: any) => {
-   
         const result = data[0].payload.doc.data();
-        const idResult = result.id;
+        const idResult = data[0].payload.doc.id;
         this.docID = idResult;
-        console.info("DocumentID" +idResult)
+        console.info("DocumentID " +idResult)
        
       Object.keys(result).filter(item=>item!=='id').forEach((item) => {
       this.userForm.controls[item].setValue(result[item]);
      });
       // this.data = data[0].payload.doc.data();
-      console.log('getid', id);
+      console.log('getid ', id);
     });
   }
-
- 
     onSubmit() {
-        const data = {
+      debugger  
+      const data = {
             name: this.userForm.controls["name"].value,
             email: this.userForm.controls["email"].value,
             age: this.userForm.controls["age"].value,
@@ -59,13 +59,15 @@ export class UserPage {
         };
         if (this.userId === null) {
              this.loading = true;
-            this.usersService.create(data).then(() => this.loading = false)
+            this.usersService.create(data).then(() => { this.loading = false; this.router.navigate(['/']) })
                 .catch((err) => this.loading = false);
         } else {
-             this.usersService.update(this.docID,data).then(() => this.loading = false)
-                .catch((err) => this.loading = false);
+          data.id = this.userId;
+          this.usersService.update(this.docID, data).then(() => { this.loading = false; this.router.navigate(['/']) })
+               .catch((err) => this.loading = false);
+              
         }
         
-  
+       
   }
 }
