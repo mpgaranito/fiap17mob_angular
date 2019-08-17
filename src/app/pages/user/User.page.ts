@@ -3,6 +3,7 @@ import { UsersService } from '../../services/Users.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import uuid from 'uuid';
 
 @Component({
   templateUrl: './User.page.html',
@@ -49,7 +50,6 @@ export class UserPage {
         console.log('getid ', id);
       });
   }
-<<<<<<< HEAD
   onSubmit() {
     debugger
     const data = {
@@ -57,10 +57,11 @@ export class UserPage {
       email: this.userForm.controls["email"].value,
       age: this.userForm.controls["age"].value,
       phone: this.userForm.controls["phone"].value,
-      id: this.userForm.contains["id"].value,
+      id:null
     };
     if (this.userId === null) {
       this.loading = true;
+      data.id =  uuid();
       this.usersService.create(data).then(() => { this.loading = false; this.router.navigate(['/']) })
         .catch((err) => this.loading = false);
     } else {
@@ -71,28 +72,5 @@ export class UserPage {
     }
 
 
-=======
-    onSubmit() {
-      debugger  
-      const data = {
-	    id: "0",
-            name: this.userForm.controls["name"].value,
-            email: this.userForm.controls["email"].value,
-            age: this.userForm.controls["age"].value,
-            phone: this.userForm.controls["phone"].value,
-        };
-        if (this.userId === null) {
-             this.loading = true;
-            this.usersService.create(data).then(() => { this.loading = false; this.router.navigate(['/']) })
-                .catch((err) => this.loading = false);
-        } else {
-          data.id = this.userId;
-          this.usersService.update(this.docID, data).then(() => { this.loading = false; this.router.navigate(['/']) })
-               .catch((err) => this.loading = false);
-              
-        }
-        
-       
->>>>>>> 0abbf2199a693fe8a884ea66cc20d188b9f252c5
   }
 }

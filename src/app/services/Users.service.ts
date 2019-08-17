@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import uuid from 'uuid';
+//import uuid from 'uuid';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
@@ -29,7 +29,7 @@ export class UsersService {
   
   create(data) {
     return this.db.collection('users').add({
-      id: uuid(),
+    //  id: uuid(),
       ...data,
     });
   }
