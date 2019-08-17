@@ -52,6 +52,7 @@ export class UserPage {
     onSubmit() {
       debugger  
       const data = {
+	    id: "0",
             name: this.userForm.controls["name"].value,
             email: this.userForm.controls["email"].value,
             age: this.userForm.controls["age"].value,

@@ -8,7 +8,7 @@ import { UsersService } from '../../services/Users.service';
 
 export class UserListPage {
   
-  private dados: Array = [];
+  private dados = [];
 
   constructor(
     private usersService: UsersService
