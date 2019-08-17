@@ -14,8 +14,12 @@ import { HeaderComponent } from './components/Header/Header.component';
 import { LoadingComponent } from './components/Loading/Loading.component';
 import { UserListPage } from './pages/UserList/UserList.page';
 import { UserPage } from './pages/User/User.page';
+<<<<<<< HEAD
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { filterPipe } from './pipes/filter.pipe';
+=======
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+>>>>>>> 0abbf2199a693fe8a884ea66cc20d188b9f252c5
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import { filterPipe } from './pipes/filter.pipe';
  	  AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
