@@ -10,10 +10,10 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HeaderComponent } from './components/Header/Header.component';
-import { LoadingComponent } from './components/Loading/Loading.component';
-import { UserListPage } from './pages/UserList/UserList.page';
-import { UserPage } from './pages/User/User.page';
+import { HeaderComponent } from './components/header/Header.component';
+import { LoadingComponent } from './components/loading/Loading.component';
+import { UserListPage } from './pages/userlist/UserList.page';
+import { UserPage } from './pages/user/User.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
 //import { filterPipe } from './pipes/filter.pipe';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';

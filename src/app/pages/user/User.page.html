@@ -1,17 +1,64 @@
-<div>
+<div class="container register-form">
   <loading-component [show]="loading"></loading-component>
- 
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
-   
-   <input type="text" name="name" formControlName="name" />
-  <input type="text" name="age" formControlName="age" />
-  <input type="text" name="email" formControlName="email" />
-  <input type="text" name="phone" formControlName="phone" />
-  <div *ngIf="userForm.controls.name.invalid&&userForm.controls.name.touched">
-    O campo nome é obrigatório
+  <div class="note">
+    <p>Register</p>
   </div>
-  <button type="submit" [disabled]="!userForm.valid" >
-    Criar
-  </button>
-</form>
+
+  <div class="form-content">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+          <div class="col-md-6">
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Seu Nome *" value=""/>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="CPF *" value=""/>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="E-mail *" value=""/>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Phone Number *" value=""/>
+              </div>
+          </div>
+          <div class="col-md-12">
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Endereço *" value=""/>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Numero *" value=""/>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Bairro *" value=""/>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Complemento *" value=""/>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="CEP *" value=""/>
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Your Password *" value=""/>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Confirm Password *" value=""/>
+              </div>
+          </div>
+      </div>
+      <div *ngIf="userForm.controls.name.invalid&&userForm.controls.name.touched">
+        O campo nome é obrigatório
+      </div>
+      <button  class="btnSubmit" type="submit" [disabled]="!userForm.valid">
+        Enviar
+      </button>
+    </form>
+  </div>
 </div>

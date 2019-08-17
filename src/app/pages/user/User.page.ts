@@ -17,7 +17,7 @@ export class UserPage {
     phone: new FormControl('', Validators.required)
 
   });
-  private loading: boolean = false;
+  public loading: boolean = false;
 
   private userId: string = "";
   private docID: string = "";
