@@ -7,23 +7,27 @@ import { UsersService } from '../../services/Users.service';
 })
 
 export class UserListPage {
-  
-  private dados: Array = [];
+
+  //private dados: Array = [];
 
   constructor(
     private usersService: UsersService
      ) { }
-  
+
   ngOnInit() {
     this.getUser();
   }
-  
+
   private getUser() {
     this.usersService.getUsers()
       .subscribe((data: any) => {
-        data.forEach(element => this.dados.push(element.data()));
+     //   data.forEach(element => this.dados.push(element.data()));
       });
     }
 
+  setFilterBy(event: any) {
+    this.filterBy = event.target.value;
+
+  }
 
 }
