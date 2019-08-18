@@ -3,62 +3,81 @@
   <div class="note">
     <p>Register</p>
   </div>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-content">
 
-  <div class="form-content">
-      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-          <div class="col-md-6">
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Seu Nome *" value=""/>
-              </div>
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="CPF *" value=""/>
-              </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="name"> Nome</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Seu Nome *"
+              formControlName="name" />
           </div>
-          <div class="col-md-6">
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="E-mail *" value=""/>
-              </div>
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Phone Number *" value=""/>
-              </div>
+          <div class="form-group">
+            <label>CPF</label>
+            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF *"
+              formControlName="cpf" />
           </div>
-          <div class="col-md-12">
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Endereço *" value=""/>
-              </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input type="text" class="form-control" name="email" id="email" placeholder="E-mail *"
+              formControlName="email" />
           </div>
-          <div class="col-md-6">
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Numero *" value=""/>
-              </div>
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Bairro *" value=""/>
-              </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço *"
+              formControlName="endereco" />
           </div>
-          <div class="col-md-6">
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Complemento *" value=""/>
-              </div>
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="CEP *" value=""/>
-              </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="numero">Número</label>
+            <input type="number" name="numero" id="numero" class="form-control" placeholder="Numero *"
+              formControlName="numero" />
           </div>
-          <div class="col-md-6">
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Your Password *" value=""/>
-              </div>
-              <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Confirm Password *" value=""/>
-              </div>
+          <div class="form-group">
+            <label for="bairro">Bairro</label>
+            <input type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairro *"
+              formControlName="bairro" />
           </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="complemento">Complemento</label>
+            <input type="text" name="complemento" id="complemento" class="form-control" placeholder="Complemento *"
+               forControlName="complemento" />
+          </div>
+          <div class="form-group">
+            <label for="cep">CEP</label>
+            <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP *"
+              forControlName="cep" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha" class="form-control" placeholder="Sua Senha *"
+              forControlName="senha" />
+          </div>
+          <div class="form-group">
+            <label for="confirmaSenha">Digite Novamente a Senha</label>
+            <input type="password" name="confirmaSenha" id="confirmaSenha" class="form-control"
+              placeholder="Confirma a Senha *"  formControlName="confirmaSenha" />
+          </div>
+        </div>
       </div>
       <div *ngIf="userForm.controls.name.invalid&&userForm.controls.name.touched">
         O campo nome é obrigatório
       </div>
-      <button  class="btnSubmit" type="submit" [disabled]="!userForm.valid">
+      <button class="btnSubmit" type="submit" [disabled]="!userForm.valid">
         Enviar
       </button>
-    </form>
-  </div>
+
+    </div>
+  </form>
+
 </div>
