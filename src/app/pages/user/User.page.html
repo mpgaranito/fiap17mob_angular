@@ -1,22 +1,29 @@
-<div class="container register-form">
-  <loading-component [show]="loading"></loading-component>
-  <div class="note">
-    <p>Register</p>
-  </div>
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="container register-form">
+
+    <loading-component [show]="loading"></loading-component>
+    <div class="note">
+      <p>Register</p>
+    </div>
+
     <div class="form-content">
 
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="name"> Nome</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="Seu Nome *"
-              formControlName="name" />
+            <label for="nome"> Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" placeholder="Seu Nome *"
+              formControlName="nome"/>
+              <span id="nomeMsg" class="text text-small text-danger"
+              *ngIf="userForm.controls.nome.invalid && userForm.controls.nome.touched">O campo nome é
+              obrigatório.</span>
           </div>
           <div class="form-group">
             <label>CPF</label>
-            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF *"
-              formControlName="cpf" />
+            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF *" formControlName="cpf" />
+            <span id="cpfMsg" class="text text-small text-danger"
+            *ngIf="userForm.controls.cpf.invalid && userForm.controls.cpf.touched">O campo CPF é
+            obrigatório.</span>
           </div>
         </div>
         <div class="col-md-6">
@@ -24,6 +31,9 @@
             <label for="email">E-Mail</label>
             <input type="text" class="form-control" name="email" id="email" placeholder="E-mail *"
               formControlName="email" />
+              <span id="emailMsg" class="text text-small text-danger"
+              *ngIf="userForm.controls.email.invalid && userForm.controls.email.touched">O campo E-mail é
+              obrigatório.</span>
           </div>
         </div>
         <div class="col-md-12">
@@ -31,6 +41,9 @@
             <label for="endereco">Endereço</label>
             <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço *"
               formControlName="endereco" />
+              <span id="cpfMsg" class="text text-small text-danger"
+              *ngIf="userForm.controls.endereco.invalid && userForm.controls.endereco.touched">O campo Endereço é
+              obrigatório.</span>
           </div>
         </div>
         <div class="col-md-6">
@@ -38,46 +51,53 @@
             <label for="numero">Número</label>
             <input type="number" name="numero" id="numero" class="form-control" placeholder="Numero *"
               formControlName="numero" />
+              <span id="numeroMsg" class="text text-small text-danger"
+              *ngIf="userForm.controls.numero.invalid && userForm.controls.numero.touched">O campo Número é
+              obrigatório.</span>
           </div>
           <div class="form-group">
             <label for="bairro">Bairro</label>
-            <input type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairro *"
+            <input type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairro"
               formControlName="bairro" />
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="complemento">Complemento</label>
-            <input type="text" name="complemento" id="complemento" class="form-control" placeholder="Complemento *"
-               forControlName="complemento" />
+            <input type="text" name="complemento" id="complemento" class="form-control" placeholder="Complemento"
+              forControlName="complemento" />
           </div>
           <div class="form-group">
             <label for="cep">CEP</label>
-            <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP *"
-              forControlName="cep" />
+            <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP *" formControlName="cep" />
+            <span id="cepMsg" class="text text-small text-danger"
+            *ngIf="userForm.controls.cep.invalid && userForm.controls.cep.touched">O campo CEP é
+            obrigatório.</span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="senha">Senha</label>
             <input type="password" name="senha" id="senha" class="form-control" placeholder="Sua Senha *"
-              forControlName="senha" />
+            formControlName="senha" />
+              <span id="senhaMsg" class="text text-small text-danger"
+              *ngIf="userForm.controls.senha.invalid && userForm.controls.senha.touched">O campo Senha é
+              obrigatório.</span>
           </div>
           <div class="form-group">
             <label for="confirmaSenha">Digite Novamente a Senha</label>
             <input type="password" name="confirmaSenha" id="confirmaSenha" class="form-control"
-              placeholder="Confirma a Senha *"  formControlName="confirmaSenha" />
+              placeholder="Confirma a Senha *" formControlName="confirmaSenha" />
+              <span id="confirmasenhaMsg" class="text text-small text-danger"
+              *ngIf="userForm.controls.confirmaSenha.invalid && userForm.controls.confirmaSenha.touched">O campo Confirmar a Senha é
+              obrigatório.</span>
           </div>
         </div>
       </div>
-      <div *ngIf="userForm.controls.name.invalid&&userForm.controls.name.touched">
-        O campo nome é obrigatório
-      </div>
-      <button class="btnSubmit" type="submit" [disabled]="!userForm.valid">
-        Enviar
+        <button class="btnSubmit" type="submit" [disabled]="!userForm.valid">
+        <span *ngIf="userId === null">Criar</span>
+        <span *ngIf="userId != null">Atualizar</span>
       </button>
-
     </div>
-  </form>
-
-</div>
+  </div>
+</form>

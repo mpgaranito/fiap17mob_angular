@@ -13,24 +13,24 @@ export class UsersService {
 
 
   getUsers() {
-    
+
     return this.db.collection(
       'users').get();
-      }
+  }
   getById(id: string) {
     return this.db.collection(
       'users', ref => ref.where('id', '==', id)
-    ).snapshotChanges() ;
+    ).snapshotChanges();
   }
   update(docId: string, data) {
     console.log(data);
     return this.db.collection('users').doc(docId).set(data);
   }
-  
+
   create(data) {
     return this.db.collection('users').add({
-    //  id: uuid(),
-      ...data,
+      //  id: uuid(),
+      data,
     });
   }
 }
