@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "teste2": {
+    "cadastro": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/teste2",
+            "outputPath": "dist/cadastro",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "teste2:build"
+            "browserTarget": "cadastro:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "teste2:build:production"
+              "browserTarget": "cadastro:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "teste2:build"
+            "browserTarget": "cadastro:build"
           }
         },
         "test": {
@@ -107,7 +107,7 @@
         }
       }
     },
-    "teste2-e2e": {
+    "cadastro-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -116,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "teste2:serve"
+            "devServerTarget": "cadastro:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "teste2:serve:production"
+              "devServerTarget": "cadastro:serve:production"
             }
           }
         },
@@ -136,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "teste2"
+  "defaultProject": "cadastro"
 }
