@@ -1,62 +1,68 @@
 import { Component } from '@angular/core';
-import { UsersService } from '../../services/Users.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { UsersService } from '../../services/Users.service';
 import uuid from 'uuid';
 
 @Component({
-  templateUrl: './User.page.html',
-  styleUrls: ['./User.page.css']
+    templateUrl: './User.page.html',
+    styleUrls: ['./User.page.css']
 })
+
 export class UserPage {
-  userForm = new FormGroup({
-    nome: new FormControl('', Validators.required),
-    cpf: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    endereco: new FormControl('', Validators.required),
-    numero: new FormControl('', Validators.required),
-    senha: new FormControl('', Validators.required),
-    confirmaSenha: new FormControl('', Validators.required),
-    bairro: new FormControl(''),
-    complemento: new FormControl(''),
-    cep: new FormControl('', Validators.required),
-  });
-  public loading = false;
 
-  public userId = '';
-  private docID = '';
+    public loading: boolean = false;
+    public userId: string = '';
+    public docId: string = '';
 
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private usersService: UsersService,
+       // public payload: any = null
+    ) { }
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private usersService: UsersService
-  ) { }
+    userForm = new FormGroup({
+      nome: new FormControl('', Validators.required),
+      cpf: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      endereco: new FormControl('', Validators.required),
+      numero: new FormControl('', Validators.required),
+      bairro: new FormControl(''),
+      cep: new FormControl('', Validators.required),
+      senha: new FormControl('', Validators.required),
+      confirmaSenha: new FormControl('', Validators.required),
+      complemento: new FormControl(''),
+  })
 
-  ngOnInit() {
-    this.userId = this.route.snapshot.paramMap.get('id');
-    if (this.userId) { this.getUser(this.userId); }
-  }
+    ngOnInit() {
+        this.userId = this.route.snapshot.paramMap.get('id');
 
-  private getUser(id: string) {
+        if (this.userId) {
+            this.getUser(this.userId);
+        }
+    }
 
-    console.log(id);
-     this.usersService.getById(id)
-      .subscribe((data: any) => {
-        const result = data[0].payload.doc.data();
-        const idResult = data[0].payload.doc.id;
-        this.docID = idResult;
-        console.log('DocumentID ' + idResult);
-        Object.keys(result).filter(item => item !== 'id').forEach((item) => {
-          this.userForm.controls[item].setValue(result[item]);
-        });
-        // this.data = data[0].payload.doc.data();
-        console.log('getid ', id);
-      });
-  }
-  onSubmit() {
+    private getUser(id: string) {
+        this.loading = true;
+        this.usersService.getById(id)
+            .subscribe((data: any) => {
+              console.info(data);
+             var result = data[0];
+             this.docId = result.id;
+                Object.keys(result)
+                    .filter(item => item !== 'id')
+                    .forEach((item) => {
+                        this.userForm.controls[item].setValue(result[item]);
+                        this.loading = false;
+                    });
+            });
 
+    }
+
+    onSubmit() {
+
+       
     const data = {
       nome: this.userForm.controls["nome"].value,
       cpf: this.userForm.controls["cpf"].value,
@@ -78,7 +84,7 @@ export class UserPage {
         .catch((err) => this.loading = false);
     } else {
       data.id = this.userId;
-      this.usersService.update(this.docID, data).then(() => { this.loading = false; this.router.navigate(['/']); })
+      this.usersService.update(this.docId, data).then(() => { this.loading = false; this.router.navigate(['/']); })
         .catch((err) => this.loading = false);
 
     }
