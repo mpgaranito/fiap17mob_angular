@@ -14,13 +14,14 @@ export class UsersService {
 
   getUsers() {
 
-    return this.db.collection(
-      'users').get();
+    return this.db.collection('users').snapshotChanges();
   }
   getById(id: string) {
-    return this.db.collection(
+    var r= this.db.collection(
       'users', ref => ref.where('id', '==', id)
     ).snapshotChanges();
+    console.log(r);     
+    return r;
   }
   update(docId: string, data) {
     console.log(data);

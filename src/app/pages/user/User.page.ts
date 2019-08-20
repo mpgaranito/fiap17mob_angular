@@ -42,7 +42,7 @@ export class UserPage {
   private getUser(id: string) {
 
     console.log(id);
-    this.usersService.getById(id)
+     this.usersService.getById(id)
       .subscribe((data: any) => {
         const result = data[0].payload.doc.data();
         const idResult = data[0].payload.doc.id;
@@ -58,16 +58,16 @@ export class UserPage {
   onSubmit() {
 
     const data = {
-      nome: this.userForm.controls.nome.value,
-      cpf: this.userForm.controls.cpf.value,
-      email: this.userForm.controls.email.value,
-      endereco: this.userForm.controls.endereco.value,
-      numero: this.userForm.controls.numero.value,
-      senha: this.userForm.controls.senha.value,
-      confirmaSenha: this.userForm.controls.confirmaSenha.value,
-      bairro: this.userForm.controls.bairro.value,
-      complemento: this.userForm.controls.complemento.value,
-      cep: this.userForm.controls.cep.value,
+      nome: this.userForm.controls["nome"].value,
+      cpf: this.userForm.controls["cpf"].value,
+      email: this.userForm.controls["email"].value,
+      endereco: this.userForm.controls["endereco"].value,
+      numero: this.userForm.controls["numero"].value,
+      senha: this.userForm.controls["senha"].value,
+      confirmaSenha: this.userForm.controls["confirmaSenha"].value,
+      bairro: this.userForm.controls["bairro"].value,
+      complemento: this.userForm.controls["complemento"].value,
+      cep: this.userForm.controls["cep"].value,
       id: null
     };
     console.log(data);

@@ -19,10 +19,15 @@ export class UserListPage {
   }
 
   private getUser() {
-    this.usersService.getUsers()
-      .subscribe((data: any) => {
-       data.forEach(element => this.dados.push(element.data()));
-      });
+    this.dados = [];
+        this.usersService.getUsers()
+            .subscribe((data: any) => {
+              Object.keys(data)
+                 .forEach((index) => {
+                   console.log(data[index].payload.doc.data());
+                  this.dados.push(data[index].payload.doc.data());
+                });   
+            });
     }
 
   setFilterBy(event: any) {
