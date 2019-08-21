@@ -12,10 +12,14 @@ export class UsersService {
     ) { }
 
     getById(id: String) {
-       // return this.db.collection('users', ref => ref.where('id', '==', id)).snapshotChanges(); //Parou de funcionar 
+       // return this.db.collection('users', ref => ref.where('id', '==', id)).snapshotChanges(); //Parou de funcionar
       return this.db.collection('users', ref => ref.where('id', '==', id))
        .valueChanges({ idField: 'id' });
     }
+
+  delete(docId) {
+    this.db.collection('users').doc(docId).delete();
+  }
 
     getUsers() {
         return this.db.collection('users').snapshotChanges();
