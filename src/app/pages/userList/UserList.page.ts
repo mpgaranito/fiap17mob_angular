@@ -6,7 +6,7 @@ import { UsersService } from '../../services/Users.service';
     styleUrls: ['./UserList.page.css']
 })
 
-export class UserListPage { 
+export class UserListPage {
 
     public dados = [];
 
@@ -27,12 +27,14 @@ export class UserListPage {
                 Object.keys(data)
                 .forEach((index) => {
                   //debugger;
-                    this.dados.push(data[index].payload.doc.data());                  
-                });   
+                    this.dados.push(data[index].payload.doc.data());
+                });
             });
     }
 
+
     setFilterBy(event: any) {
-       // this.filterBy = event.target.value
-    }
+      this.filterBy = event.target.value
+  }
+
 }

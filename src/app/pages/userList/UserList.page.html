@@ -12,6 +12,15 @@
 
         <table id="mytable" class="table table-bordred table-striped">
           <thead>
+            	<tr>
+                  <th colspan="5">
+                    <div class="form-group">
+                      <label for="inputFilter">Procurar</label>
+                      <input type="text" class="form-control" id="filtro" type="text" name="filtro"
+                        (keyup)="setFilterBy($event)">
+                    </div>
+                  </th>
+                </tr>
             <th>Nome</th>
             <th>Cpf</th>
             <th>Editar</th>
