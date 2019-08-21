@@ -15,6 +15,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { FilterPipe } from './pipes/filter.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OrderPipe } from './pipes/order.pipe';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { OrderPipe } from './pipes/order.pipe';
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="nome"> Nome</label>
-            <input type="text" name="nome" id="nome" class="form-control" placeholder="Seu Nome *"
+            <input tabindex="1" type="text" name="nome" id="nome" class="form-control" placeholder="Seu Nome *"
               formControlName="nome"/>
               <span id="nomeMsg" class="text text-small text-danger"
               *ngIf="userForm.controls.nome.invalid && userForm.controls.nome.touched">O campo nome é
@@ -20,7 +20,7 @@
           </div>
           <div class="form-group">
             <label>CPF</label>
-            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF *" formControlName="cpf" />
+            <input tabindex="2" type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF *" formControlName="cpf" [dropSpecialCharacters]="false" mask="000.000.000-00" />
             <span id="cpfMsg" class="text text-small text-danger"
             *ngIf="userForm.controls.cpf.invalid && userForm.controls.cpf.touched">O campo CPF é
             obrigatório.</span>
@@ -29,7 +29,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="email">E-Mail</label>
-            <input type="text" class="form-control" name="email" id="email" placeholder="E-mail *"
+            <input tabindex="3" type="text" class="form-control" name="email" id="email" placeholder="E-mail *"
               formControlName="email" />
               <span id="emailMsg" class="text text-small text-danger"
               *ngIf="userForm.controls.email.invalid && userForm.controls.email.touched">O campo E-mail é
@@ -39,7 +39,7 @@
         <div class="col-md-12">
           <div class="form-group">
             <label for="endereco">Endereço</label>
-            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço *"
+            <input tabindex="4"  type="text" class="form-control" name="endereco" id="endereco" placeholder="Endereço *"
               formControlName="endereco" />
               <span id="cpfMsg" class="text text-small text-danger"
               *ngIf="userForm.controls.endereco.invalid && userForm.controls.endereco.touched">O campo Endereço é
@@ -49,7 +49,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="numero">Número</label>
-            <input type="number" name="numero" id="numero" class="form-control" placeholder="Numero *"
+            <input tabindex="5"  type="number" name="numero" id="numero" class="form-control" placeholder="Numero *"
               formControlName="numero" />
               <span id="numeroMsg" class="text text-small text-danger"
               *ngIf="userForm.controls.numero.invalid && userForm.controls.numero.touched">O campo Número é
@@ -57,19 +57,19 @@
           </div>
           <div class="form-group">
             <label for="bairro">Bairro</label>
-            <input type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairro"
+            <input tabindex="6"  type="text" name="bairro" id="bairro" class="form-control" placeholder="Bairro"
               formControlName="bairro" />
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="complemento">Complemento</label>
-            <input type="text" name="complemento" id="complemento" class="form-control" placeholder="Complemento"
+            <input tabindex="7"  type="text" name="complemento" id="complemento" class="form-control" placeholder="Complemento"
             formControlName="complemento" />
           </div>
           <div class="form-group">
             <label for="cep">CEP</label>
-            <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP *" formControlName="cep" />
+            <input tabindex="8"  type="text" name="cep" id="cep" class="form-control" placeholder="CEP *" formControlName="cep" [dropSpecialCharacters]="false" mask="00000-000"/>
             <span id="cepMsg" class="text text-small text-danger"
             *ngIf="userForm.controls.cep.invalid && userForm.controls.cep.touched">O campo CEP é
             obrigatório.</span>
@@ -78,7 +78,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senha" class="form-control" placeholder="Sua Senha *"
+            <input tabindex="9"  type="password" name="senha" id="senha" class="form-control" placeholder="Sua Senha *"
             formControlName="senha" />
               <span id="senhaMsg" class="text text-small text-danger"
               *ngIf="userForm.controls.senha.invalid && userForm.controls.senha.touched">O campo Senha é
@@ -86,7 +86,7 @@
           </div>
           <div class="form-group">
             <label for="confirmaSenha">Digite Novamente a Senha</label>
-            <input type="password" name="confirmaSenha" id="confirmaSenha" class="form-control"
+            <input tabindex="10"  type="password" name="confirmaSenha" id="confirmaSenha" class="form-control"
               placeholder="Confirma a Senha *" formControlName="confirmaSenha" />
               <span id="confirmasenhaMsg" class="text text-small text-danger"
               *ngIf="userForm.controls.confirmaSenha.invalid && userForm.controls.confirmaSenha.touched">O campo Confirmar a Senha é
@@ -94,7 +94,7 @@
           </div>
         </div>
       </div>
-        <button class="btnSubmit" type="submit" [disabled]="!userForm.valid">
+        <button tabindex="11"  class="btnSubmit" type="submit" [disabled]="!userForm.valid">
         <span *ngIf="userId === null">Criar</span>
         <span *ngIf="userId != null">Atualizar</span>
       </button>
