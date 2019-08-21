@@ -15,7 +15,7 @@
             	<tr>
                   <th colspan="5">
                     <div class="form-group">
-                      <label for="inputFilter">Procurar</label>
+                      <label for="filtro">Procurar</label>
                       <input type="text" class="form-control" id="filtro" type="text" name="filtro"
                         (keyup)="setFilterBy($event)">
                     </div>
@@ -28,7 +28,7 @@
           </thead>
           <tbody>
 
-            <tr *ngFor="let dado of dados">
+            <tr *ngFor="let dado of dados | filter: filterBy">
               <td>{{dado.nome}}</td>
               <td>{{dado.cpf}}</td>
               <td>

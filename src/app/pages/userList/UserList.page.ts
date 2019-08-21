@@ -34,7 +34,7 @@ export class UserListPage {
 
 
     setFilterBy(event: any) {
-      this.filterBy = event.target.value
+      this.filterBy = event.target.value;
   }
 
 }
