@@ -1,13 +1,15 @@
-/*import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe(
-  {
-    name: 'filter',
-  })
+@Pipe({
+    name: 'filter'
+})
 
-export class filterPipe implements PipeTransform{
+export class FilterPipe implements PipeTransform {
 
-
-
+  transform(items: any, filterBy: string) {
+        var values = items.filter(function(data) {
+            return data.name.toUpperCase().includes(filterBy.toUpperCase());
+        });
+        return values;
+    }
 }
-*/
