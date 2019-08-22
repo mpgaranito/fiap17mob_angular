@@ -33,7 +33,7 @@ export class UserListPage {
         Object.keys(data)
           .forEach((index) => {
             //debugger;
-            this.dados.push(data[index].payload.doc.data());
+            try { this.dados.push(data[index].payload.doc.data()); } catch (e) { console.error(e);}
           });
       });
   }
