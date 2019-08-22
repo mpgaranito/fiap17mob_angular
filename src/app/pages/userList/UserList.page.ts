@@ -25,15 +25,12 @@ export class UserListPage {
   }
 
   private list() {
-
-    console.log(this.dados);
     this.usersService.getUsers()
       .subscribe((data: any) => {
         this.dados = [];
         Object.keys(data)
           .forEach((index) => {
-            //debugger;
-            try { this.dados.push(data[index].payload.doc.data()); } catch (e) { console.error(e);}
+              try { this.dados.push(data[index].payload.doc.data()); } catch (e) { console.error(e);}
           });
       });
   }
