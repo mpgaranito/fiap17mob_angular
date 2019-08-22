@@ -62,7 +62,7 @@ export class UserPage {
 
     onSubmit() {
 
-       
+
     const data = {
       nome: this.userForm.controls["nome"].value,
       cpf: this.userForm.controls["cpf"].value,
@@ -80,11 +80,11 @@ export class UserPage {
     if (this.userId === null) {
       this.loading = true;
       data.id = uuid();
-      this.usersService.create(data).then(() => { this.loading = false; this.router.navigate(['/']); })
+      this.usersService.create(data).then(() => { this.loading = false; this.router.navigate(['/userlist']); })
         .catch((err) => this.loading = false);
     } else {
       data.id = this.userId;
-      this.usersService.update(this.docId, data).then(() => { this.loading = false; this.router.navigate(['/']); })
+      this.usersService.update(this.docId, data).then(() => { this.loading = false; this.router.navigate(['/userlist']); })
         .catch((err) => this.loading = false);
 
     }

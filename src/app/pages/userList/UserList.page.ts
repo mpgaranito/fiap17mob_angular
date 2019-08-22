@@ -10,14 +10,11 @@ import { Router } from '@angular/router';
 export class UserListPage {
 
   public dados = [];
-
   public filterBy: string = '';
-
   public nameButton: string = '';
-
   public textOrderBy: string = 'ASC';
-
-  // public orderBy: [];
+  public userId: string = '';
+  public docId: string = '';
 
   constructor(
     private usersService: UsersService
@@ -28,9 +25,11 @@ export class UserListPage {
   }
 
   private list() {
-    this.dados = [];
+
+    console.log(this.dados);
     this.usersService.getUsers()
       .subscribe((data: any) => {
+        this.dados = [];
         Object.keys(data)
           .forEach((index) => {
             //debugger;
@@ -39,6 +38,11 @@ export class UserListPage {
       });
   }
 
+  deleteUser(docID: String) {
+    if(confirm("Are you sure to delete ?")) {
+      this.usersService.delete(docID);
+    }
+  }
 
   setFilterBy(event: any) {
     this.filterBy = event.target.value;
