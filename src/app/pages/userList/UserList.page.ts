@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersService } from '../../services/Users.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './UserList.page.html',
