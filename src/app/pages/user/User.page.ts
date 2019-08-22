@@ -76,7 +76,7 @@ export class UserPage {
       cep: this.userForm.controls["cep"].value,
       id: null
     };
-    console.log(data);
+
     if (this.userId === null) {
       this.loading = true;
       data.id = uuid();
