@@ -18,6 +18,8 @@ import { OrderPipe } from './pipes/order.pipe';
 import { NgxMaskModule } from 'ngx-mask';
 import { LoginPage } from './pages/login/login.page';
 import { Error404Component } from './components/error404/error404.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -40,9 +42,10 @@ import { Error404Component } from './components/error404/error404.component';
     HttpClientModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AngularFireAuthModule,
     NgxMaskModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
