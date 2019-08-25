@@ -9,13 +9,13 @@ import { Observable } from 'rxjs';
 export class AuthService {
   user: Observable<firebase.User>;
 
-  private isUserLogged: boolean = false;
+  // private isUserLogged = false;
 
   constructor(
     private firebaseAuth: AngularFireAuth,
     private router: Router,
     ) {
-    this.user = firebaseAuth.authState; 
+    this.user = firebaseAuth.authState;
   }
 
   signup(email: string, password: string) {
@@ -41,7 +41,7 @@ export class AuthService {
       .then(value => {
         console.log('Usuario logado');
         this.writeUser(true);
-        if(this.isLogged()){
+        if (this.isLogged()) {
           this.router.navigate(['/userlist']);
         }
       })
@@ -58,10 +58,8 @@ export class AuthService {
     this.writeUser(false);
   }
   isLogged(): boolean {
-    
     const result = JSON.parse(localStorage.getItem('logado'));
-    console.log("Usuario" + result)
+    console.log('Usuario' + result);
     return result;
   }
-
 }
