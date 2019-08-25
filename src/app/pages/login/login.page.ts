@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+    ) 
+    { 
+
+    }
 
   ngOnInit() {
+  }
+
+  efetuaLogin(login: any,senha: any){
+    debugger;
+  console.log(login + ''+senha);
   }
 
 }

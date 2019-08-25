@@ -107,6 +107,11 @@ input:focus {
 input:placeholder {
   color: #cccccc;
 }
+
+button{
+  background-color:#ce1380;
+  color: #cccccc;
+}
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
