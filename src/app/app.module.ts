@@ -16,7 +16,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OrderPipe } from './pipes/order.pipe';
 import { NgxMaskModule } from 'ngx-mask';
-import { LoginPage } from './pages/login/login.page';
+import { LoginPage } from './pages/login/Login.page';
 import { Error404Component } from './components/error404/error404.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './services/auth.service';
