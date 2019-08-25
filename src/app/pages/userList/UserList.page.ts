@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UsersService } from '../../services/Users.service';
 import { Router } from '@angular/router';
+import { ConfirmationDialogService } from '../../services/confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   templateUrl: './UserList.page.html',
@@ -10,14 +11,15 @@ import { Router } from '@angular/router';
 export class UserListPage {
 
   public dados = [];
-  public filterBy: string = '';
-  public nameButton: string = '';
-  public textOrderBy: string = 'ASC';
-  public userId: string = '';
-  public docId: string = '';
+  public filterBy = '';
+  public nameButton = '';
+  public textOrderBy = 'ASC';
+  public userId = '';
+  public docId = '';
 
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private confirmationDialogService: ConfirmationDialogService
   ) { }
 
   ngOnInit() {
@@ -30,15 +32,13 @@ export class UserListPage {
         this.dados = [];
         Object.keys(data)
           .forEach((index) => {
-              try { this.dados.push(data[index].payload.doc.data()); } catch (e) { console.error(e);}
+            try { this.dados.push(data[index].payload.doc.data()); } catch (e) { console.error(e); }
           });
       });
   }
 
-  deleteUser(docID: String) {
-    if(confirm("Are you sure to delete ?")) {
-      this.usersService.delete(docID);
-    }
+  goDeleteUser(docID: string) {
+    this.usersService.delete(docID);
   }
 
   setFilterBy(event: any) {
@@ -55,5 +55,17 @@ export class UserListPage {
     event.target.innerHTML = this.nameButton;
   }
 
+   deleteUser(docID: string) {
+    this.confirmationDialogService.confirm('Por Favor Confirme..', 'Você deseja remover ... ?')
+      .then((confirmed) => {
+        if (confirmed) {
+          console.log('User confirmed:', confirmed);
+          if ( docID ) {
+            this.goDeleteUser(docID);
+          }
+        }
+      })
+      .catch(() => console.log('Saindo....'));
+  }
 
 }

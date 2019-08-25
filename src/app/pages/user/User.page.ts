@@ -5,62 +5,68 @@ import { UsersService } from '../../services/Users.service';
 import uuid from 'uuid';
 
 @Component({
-    templateUrl: './User.page.html',
-    styleUrls: ['./User.page.css']
+  templateUrl: './User.page.html',
+  styleUrls: ['./User.page.css']
 })
 
 export class UserPage {
 
-    public loading: boolean = false;
-    public userId: string = '';
-    public docId: string = '';
+  public loading: boolean = false;
+  public userId: string = '';
+  public docId: string = '';
 
-    constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private usersService: UsersService,
-       // public payload: any = null
-    ) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private usersService: UsersService,
+    // public payload: any = null
+  ) { }
 
-    userForm = new FormGroup({
-      nome: new FormControl('', Validators.required),
-      cpf: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      endereco: new FormControl('', Validators.required),
-      numero: new FormControl('', Validators.required),
-      bairro: new FormControl(''),
-      cep: new FormControl('', Validators.required),
-      senha: new FormControl('', Validators.required),
-      confirmaSenha: new FormControl('', Validators.required),
-      complemento: new FormControl(''),
+  userForm = new FormGroup({
+    nome: new FormControl('', Validators.required),
+    cpf: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    endereco: new FormControl('', Validators.required),
+    numero: new FormControl('', Validators.required),
+    bairro: new FormControl(''),
+    cep: new FormControl('', Validators.required),
+    senha: new FormControl('', Validators.required),
+    confirmaSenha: new FormControl('', Validators.required),
+    complemento: new FormControl(''),
   })
 
-    ngOnInit() {
-        this.userId = this.route.snapshot.paramMap.get('id');
+  ngOnInit() {
+    this.userId = this.route.snapshot.paramMap.get('id');
 
-        if (this.userId) {
-            this.getUser(this.userId);
-        }
+    if (this.userId) {
+      this.getUser(this.userId);
     }
+  }
 
-    private getUser(id: string) {
-        this.loading = true;
-        this.usersService.getById(id)
-            .subscribe((data: any) => {
-              console.info(data);
-             var result = data[0];
-             this.docId = result.id;
-                Object.keys(result)
-                    .filter(item => item !== 'id')
-                    .forEach((item) => {
-                        this.userForm.controls[item].setValue(result[item]);
-                        this.loading = false;
-                    });
-            });
+  private getUser(id: string) {
+    this.loading = true;
+    debugger
+    this.usersService.getById(id)
+      .subscribe((data: any) => {
+        console.log(data);
+        const result = data[0];
+        this.docId = this.getResult(result);
+        Object.keys(result)
+          .filter(item => item !== 'id')
+          .forEach((item) => {
+            this.userForm.controls[item].setValue(result[item]);
+            this.loading = false;
+          });
+      });
 
-    }
+  }
 
-    onSubmit() {
+  private getResult(result: any): string {
+    debugger
+    return result.id;
+  }
+
+  onSubmit() {
 
 
     const data = {

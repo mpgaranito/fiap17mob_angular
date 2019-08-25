@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
@@ -21,6 +21,8 @@ import { Error404Component } from './components/error404/error404.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth-guard';
+import { ConfirmationDialogService } from './services/confirmation-dialog/confirmation-dialog.service';
+import { ConfirmationDialogComponent } from './services/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { AuthGuard } from './guards/auth-guard';
     FilterPipe,
     LoginPage,
     Error404Component,
+    ConfirmationDialogComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -46,7 +49,8 @@ import { AuthGuard } from './guards/auth-guard';
     AngularFireAuthModule,
     NgxMaskModule.forRoot()
   ],
-  providers: [AuthService,AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [AuthService, AuthGuard, ConfirmationDialogService],
+  bootstrap: [AppComponent],
+  entryComponents: [ ConfirmationDialogComponent ],
 })
 export class AppModule { }
