@@ -7,7 +7,7 @@ import uuid from 'uuid';
   templateUrl: './User.page.html',
   styleUrls: ['./User.page.css']
 })
-export class UserPage implements OnInit {
+export class UserPageComponent implements OnInit {
   public loading = false;
   public userId = '';
   public docId = '';
@@ -75,8 +75,7 @@ export class UserPage implements OnInit {
       data.id = uuid();
       this.usersService.create(data).then(() => { this.loading = false; this.router.navigate(['/userlist']); })
         .catch((err) => this.loading = false);
-    }
-    else {
+    } else {
       data.id = this.userId;
       this.usersService.update(this.docId, data).then(() => { this.loading = false; this.router.navigate(['/userlist']); })
         .catch((err) => this.loading = false);

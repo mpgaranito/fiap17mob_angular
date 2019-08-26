@@ -9,15 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/Header.component';
 import { LoadingComponent } from './components/loading/Loading.component';
-import { UserListPage } from './pages/userlist/UserList.page';
-import { UserPage } from './pages/user/User.page';
+import { UserListPageComponent } from './pages/userlist/UserList.page';
+import { UserPageComponent } from './pages/user/User.page';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FilterPipe } from './pipes/filter.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OrderPipe } from './pipes/order.pipe';
 import { NgxMaskModule } from 'ngx-mask';
-import { LoginPage } from './pages/login/Login.page';
-import { Error404Component } from './components/error404/error404.component';
+import { LoginPageComponent } from './pages/login/Login.page';
+import { Error404Component } from './components/error404/Error404.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth-guard';
@@ -29,11 +29,11 @@ import { ConfirmationDialogComponent } from './services/confirmation-dialog/conf
     AppComponent,
     HeaderComponent,
     LoadingComponent,
-    UserListPage,
-    UserPage,
+    UserListPageComponent,
+    UserPageComponent,
     OrderPipe,
     FilterPipe,
-    LoginPage,
+    LoginPageComponent,
     Error404Component,
     ConfirmationDialogComponent
   ],

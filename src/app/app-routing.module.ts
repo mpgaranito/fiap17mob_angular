@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserListPage } from './pages/userlist/UserList.page';
-import { UserPage } from './pages/user/User.page';
-import { LoginPage } from './pages/login/Login.page';
-import { Error404Component } from './components/error404/error404.component';
+import { UserListPageComponent } from './pages/userlist/UserList.page';
+import { UserPageComponent } from './pages/user/User.page';
+import { LoginPageComponent } from './pages/login/Login.page';
+import { Error404Component } from './components/error404/Error404.component';
 import { AuthGuard } from './guards/auth-guard';
 
 
 const routes: Routes = [
-  { path: '', component: LoginPage },
-  { path: 'userlist', component: UserListPage, canActivate: [AuthGuard] },
-  { path: 'user', component: UserPage , canActivate: [AuthGuard] },
-  { path: 'user/:id', component: UserPage , canActivate: [AuthGuard] },
+  { path: '', component: LoginPageComponent },
+  { path: 'userlist', component: UserListPageComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserPageComponent , canActivate: [AuthGuard] },
+  { path: 'user/:id', component: UserPageComponent , canActivate: [AuthGuard] },
   { path: '**', component: Error404Component }
 
 ];

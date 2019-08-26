@@ -7,7 +7,7 @@ import { ConfirmationDialogService } from '../../services/confirmation-dialog/co
   styleUrls: ['./UserList.page.css']
 })
 
-export class UserListPage implements OnInit {
+export class UserListPageComponent implements OnInit {
 
   public dados = [];
   public filterBy = '';

@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './Login.page.html',
   styleUrls: ['./Login.page.css']
 })
-export class LoginPage implements OnInit {
+export class LoginPageComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    if( this.authService.isLogged){
+    if (this.authService.isLogged) {
       this.router.navigate(['/userlist']);
     }
   }
@@ -25,6 +25,6 @@ export class LoginPage implements OnInit {
   efetuaLogin(login: string, senha: string) {
     console.log(login + '' + senha);
     this.authService.login(login, senha);
-    console.log('this:'+this.authService.isLogged());
+    console.log('this:' + this.authService.isLogged());
   }
 }
