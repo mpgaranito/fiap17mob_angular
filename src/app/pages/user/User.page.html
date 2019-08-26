@@ -81,8 +81,10 @@
             <input tabindex="9"  type="password" name="senha" id="senha" class="form-control" placeholder="Sua Senha *"
             formControlName="senha" />
               <span id="senhaMsg" class="text text-small text-danger"
-              *ngIf="userForm.controls.senha.invalid && userForm.controls.senha.touched">O campo Senha é
+              *ngIf="userForm.controls.senha.invalid && userForm.controls.senha.touched && userForm.controls.senha.value === userForm.controls.confirmaSenha.value">O campo Senha é
               obrigatório.</span>
+              <span id="senhaMsg" class="text text-small text-danger"
+              *ngIf="userForm.controls.senha.invalid && userForm.controls.senha.touched && userForm.controls.senha.value !== userForm.controls.confirmaSenha.value">O campo Senha deve ser igual ao campo Confirmar Senha.</span>
           </div>
           <div class="form-group">
             <label for="confirmaSenha">Digite Novamente a Senha</label>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,11 +8,11 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./Login.page.css']
 })
 export class LoginPageComponent implements OnInit {
-
+  private txtMensagem = '';
   constructor(
     private authService: AuthService,
     private router: Router
-    ) {
+  ) {
 
   }
 
@@ -23,8 +23,16 @@ export class LoginPageComponent implements OnInit {
   }
 
   efetuaLogin(login: string, senha: string) {
-    console.log(login + '' + senha);
-    this.authService.login(login, senha);
-    console.log('this:' + this.authService.isLogged());
+    if ((login) || (senha)) {
+      console.log(login + '' + senha);
+      if (this.authService.login(login, senha)) {
+        console.log('this is:' + this.authService.isLogged());
+      } else {
+        this.txtMensagem = 'Usuário e/ou senha inválido.';
+        console.log('this not is:' + this.authService.isLogged());
+      }
+    } else {
+      this.txtMensagem = 'Favor preencher login e senha corretamente.';
+    }
   }
 }

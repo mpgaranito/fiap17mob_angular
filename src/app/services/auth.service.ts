@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 
 import { Observable } from 'rxjs';
@@ -14,7 +14,7 @@ export class AuthService {
   constructor(
     private firebaseAuth: AngularFireAuth,
     private router: Router,
-    ) {
+  ) {
     this.user = firebaseAuth.authState;
   }
 
@@ -34,7 +34,7 @@ export class AuthService {
     localStorage.setItem('logado', '' + value + '');
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string): boolean {
     this.firebaseAuth
       .auth
       .signInWithEmailAndPassword(email, password)
@@ -43,12 +43,15 @@ export class AuthService {
         this.writeUser(true);
         if (this.isLogged()) {
           this.router.navigate(['/userlist']);
+          return true;
         }
       })
       .catch(err => {
         console.log('Erro..:', err.message);
         this.writeUser(false);
+        return false;
       });
+    return false;
   }
 
   logout() {

@@ -7,6 +7,7 @@
         <input type="text" id="login" class="fadeIn second" name="login" placeholder="E-Mail" #login/>
         <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" #senha/>
         <button type="button"  class="btn btn-lg btn-block fadeIn fourth"  name="btnLogin" (click)="efetuaLogin(login.value, senha.value)">Login</button> 
+        <span id="erroMsg" class="text text-small text-danger">{{txtMensagem}}</span>
       </div>
     </div>
 </div>
