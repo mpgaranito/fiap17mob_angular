@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/Users.service';
-import { Router } from '@angular/router';
 import { ConfirmationDialogService } from '../../services/confirmation-dialog/confirmation-dialog.service';
 
 @Component({
@@ -8,7 +7,7 @@ import { ConfirmationDialogService } from '../../services/confirmation-dialog/co
   styleUrls: ['./UserList.page.css']
 })
 
-export class UserListPage {
+export class UserListPage implements OnInit {
 
   public dados = [];
   public filterBy = '';

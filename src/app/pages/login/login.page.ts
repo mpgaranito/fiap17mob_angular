@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './Login.page.html',
   styleUrls: ['./Login.page.css']
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
 
   constructor(
     private authService: AuthService,

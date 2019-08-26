@@ -13,7 +13,7 @@
           <div class="form-group">
             <label for="nome"> Nome</label>
             <input tabindex="1" type="text" name="nome" id="nome" class="form-control" placeholder="Seu Nome *"
-              formControlName="nome"/>
+              formControlName="nome" #nome/>
               <span id="nomeMsg" class="text text-small text-danger"
               *ngIf="userForm.controls.nome.invalid && userForm.controls.nome.touched">O campo nome é
               obrigatório.</span>
@@ -29,7 +29,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="email">E-Mail</label>
-            <input tabindex="3" type="text" class="form-control" name="email" id="email" placeholder="E-mail *"
+            <input tabindex="3" type="email" class="form-control" name="email" id="email" placeholder="E-mail *"
               formControlName="email" />
               <span id="emailMsg" class="text text-small text-danger"
               *ngIf="userForm.controls.email.invalid && userForm.controls.email.touched">O campo E-mail é

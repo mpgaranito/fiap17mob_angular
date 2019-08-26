@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserListPage } from './pages/userlist/UserList.page';
 import { UserPage } from './pages/user/User.page';
-import { LoginPage } from './pages/login/Login.page'
-import { Error404Component } from './components/error404/error404.component'
+import { LoginPage } from './pages/login/Login.page';
+import { Error404Component } from './components/error404/error404.component';
 import { AuthGuard } from './guards/auth-guard';
 
 
