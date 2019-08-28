@@ -13,7 +13,7 @@ export class HeaderComponent {
 
   constructor(
 
-    private url: LocationStrategy,
+    public url: LocationStrategy,
     private authService: AuthService,
     public router: Router
   ) {
