@@ -58,7 +58,7 @@ Após isso, deve ser possível logar com o usuário cadastrado pela aplicação.
 
 Para realizar o _Deploy_ deve-se executar os comandos na sequência:
 
-$ ng build –prod
+$ ng build --prod
 
 Depois, para subir a aplicação para o _Firebase Hosting_
 
