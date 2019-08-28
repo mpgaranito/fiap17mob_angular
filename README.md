@@ -1,27 +1,71 @@
-# Teste2
+# Exemplo de Aplicação PWA Utilizando o Framework Angular.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+## Pré-requisitos
 
-## Development server
+- Nodejs ([https://nodejs.org/en/download/](https://nodejs.org/en/download/))
+- Cliente Git ([https://www.hostinger.com.br/tutoriais/tutorial-do-git-basics-introducao/](https://www.hostinger.com.br/tutoriais/tutorial-do-git-basics-introducao/))
+- CLI do Firebase ([https://firebase.google.com/docs/cli/?hl=pt-br](https://firebase.google.com/docs/cli/?hl=pt-br))
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Instalação do Angular
 
-## Build
+O comando que deve ser executado a partir do terminal é o seguinte:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+$ npm install -g @angular/cli
 
-## Running unit tests
+## Obter o código fonte da aplicação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Criar um diretório local, pelo terminal.
 
-## Running end-to-end tests
+$ mkdir fiap
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Entre no diretório.
 
-## Further help
+$ cd fiap
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Baixe o repositório do código fonte do GitHub.
+
+$ git clone [https://github.com/mpgaranito/fiap17mob\_angular.git](https://github.com/mpgaranito/fiap17mob_angular.git)
+
+## Instalação de dependências de pacotes
+
+Após ter o repositório, devemos baixar as dependências.
+
+$ cd fiap17mob\_angular
+
+Depois
+
+$ npm install
+
+## Execução do projeto
+
+Utilize o CLI do Angular com o comando abaixo
+
+$ ng serve
+
+Abra o Browser e navegue até a seguinte URL:
+
+ http://localhost:4200
+
+## Login na aplicação
+
+Para entrar na tela de cadastro do projeto, deve-se usar o login [admin@admin.com.br](mailto:admin@admin.com.br) senha admin.
+
+Após isso, deve ser possível logar com o usuário cadastrado pela aplicação.
+
+## _Deploy_ em produção
+
+Para realizar o _Deploy_ deve-se executar os comandos na sequência:
+
+$ ng build –prod
+
+Depois, para subir a aplicação para o _Firebase Hosting_
+
+$ firebase deploy
+
+**OBS: Demora aproximadamente 5 minutos para as alterações do**  **deploy**  **refletir em produção.**
+
+Finalmente, acessar o link [https://angular-52901.firebaseapp.com/](https://angular-52901.firebaseapp.com/) para verificação do site em produção.
+
+** **
