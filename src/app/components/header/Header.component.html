@@ -1,5 +1,6 @@
 <header>
   <div>
-      <button type="button" *ngIf="this.url.path()!=='/'" class="btn btn-link"  name="btnLogout" (click)="sair()">Sair</button>
+      <button type="button" *ngIf="this.url.path()!=='/'" class="btn btn-link"  name="btnGoBack" (click)="goback()">Voltar</button>
+      <button type="button" *ngIf="this.url.path()!=='/'" class="btn btn-link"  name="btnLogout" (click)="exit()">Sair</button>
   </div>
 </header>

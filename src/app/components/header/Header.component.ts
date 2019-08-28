@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router'
 import { LocationStrategy } from '@angular/common';
 
+
 @Component({
   selector: 'header-component',
   templateUrl: './Header.component.html',
@@ -11,14 +12,17 @@ import { LocationStrategy } from '@angular/common';
 export class HeaderComponent {
 
   constructor(
+
     private url: LocationStrategy,
     private authService: AuthService,
     public router: Router
   ) {
 
   }
-  sair() {
-    debugger;
+  goback() {
+    this.url.back();
+  }
+  exit() {
     this.authService.logout();
   }
 

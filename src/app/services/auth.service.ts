@@ -44,7 +44,6 @@ export class AuthService {
     const getEmailDataBase = this.getByEmail(email).subscribe((data: any) => {
 
       const result = data[0];
-      debugger;
       // this.db.collection('users').doc(result.id).delete();
       // this.authservice.deleteUserByMail(result.email);
       if (result) {
@@ -68,7 +67,6 @@ export class AuthService {
         console.log('Apaguei' + result.id);
       }
     });
-    debugger;
     return false;
   }
 
