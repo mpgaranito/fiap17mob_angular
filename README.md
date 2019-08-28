@@ -50,7 +50,7 @@ Abra o Browser e navegue até a seguinte URL:
 
 ## Login na aplicação
 
-Para entrar na tela de cadastro do projeto, deve-se usar o login [admin@admin.com.br](mailto:admin@admin.com.br) senha admin.
+Para entrar na tela de cadastro do projeto, deve-se usar o login [admin@admin.com.br](mailto:admin@admin.com.br) senha @admin.
 
 Após isso, deve ser possível logar com o usuário cadastrado pela aplicação.
 
