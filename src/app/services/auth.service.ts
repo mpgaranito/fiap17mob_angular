@@ -77,6 +77,7 @@ export class AuthService {
       .auth
       .signOut();
     this.writeUser(false);
+    this.router.navigate(['/']);
   }
   isLogged(): boolean {
     const result = JSON.parse(localStorage.getItem('logado'));

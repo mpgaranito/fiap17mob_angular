@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import {LocationStrategy} from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./Login.page.css']
 })
 export class LoginPageComponent implements OnInit {
-  private txtMensagem = '';
+  public txtMensagem = '';
   constructor(
     private authService: AuthService,
     private router: Router
