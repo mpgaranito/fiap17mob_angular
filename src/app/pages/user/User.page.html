@@ -30,7 +30,7 @@
           <div class="form-group">
             <label for="email">E-Mail</label>
             <input tabindex="3" type="email" class="form-control" name="email" id="email" placeholder="E-mail *"
-              formControlName="email" />
+              formControlName="email" [readonly]="userId != null" />
               <span id="emailMsg" class="text text-small text-danger"
               *ngIf="userForm.controls.email.invalid && userForm.controls.email.touched">O campo E-mail é
               obrigatório.</span>
@@ -69,29 +69,30 @@
           </div>
           <div class="form-group">
             <label for="cep">CEP</label>
-            <input tabindex="8"  type="text" name="cep" id="cep" class="form-control" placeholder="CEP *" formControlName="cep" [dropSpecialCharacters]="false" mask="00000-000"/>
+            <input tabindex="8"  type="text" name="cep" id="cep" class="form-control" placeholder="CEP *" formControlName="cep" [dropSpecialCharacters]="false" 
+            mask="00000-000"/>
             <span id="cepMsg" class="text text-small text-danger"
             *ngIf="userForm.controls.cep.invalid && userForm.controls.cep.touched">O campo CEP é
             obrigatório.</span>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
-            <label for="senha">Senha</label>
+          <div class="form-group" [hidden]="userId != null">
+            <label for="senha">Senha (min: 6 digitos)</label>
             <input tabindex="9"  type="password" name="senha" id="senha" class="form-control" placeholder="Sua Senha *"
-            formControlName="senha" />
+            formControlName="senha"  minlength="6" maxlength="10"  />
               <span id="senhaMsg" class="text text-small text-danger"
-              *ngIf="userForm.controls.senha.invalid && userForm.controls.senha.touched && userForm.controls.senha.value === userForm.controls.confirmaSenha.value">O campo Senha é
+              *ngIf="userForm.controls.senha.invalid && userForm.controls.senha.touched && userForm.controls.senha.value === userForm.controls.confirmaSenha.value && userId === null">O campo Senha é
               obrigatório.</span>
               <span id="senhaMsg" class="text text-small text-danger"
-              *ngIf="userForm.controls.senha.invalid && userForm.controls.senha.touched && userForm.controls.senha.value !== userForm.controls.confirmaSenha.value">O campo Senha deve ser igual ao campo Confirmar Senha.</span>
+              *ngIf="userForm.controls.senha.invalid && userForm.controls.senha.touched && userForm.controls.senha.value !== userForm.controls.confirmaSenha.value && userId === null">O campo Senha deve ser igual ao campo Confirmar Senha.</span>
           </div>
-          <div class="form-group">
-            <label for="confirmaSenha">Digite Novamente a Senha</label>
+          <div class="form-group"  [hidden]="userId != null">
+            <label for="confirmaSenha">Digite Novamente a Senha (min: 6 digitos)</label>
             <input tabindex="10"  type="password" name="confirmaSenha" id="confirmaSenha" class="form-control"
-              placeholder="Confirma a Senha *" formControlName="confirmaSenha" />
+              placeholder="Confirma a Senha *" formControlName="confirmaSenha" minlength="6" maxlength="10" />
               <span id="confirmasenhaMsg" class="text text-small text-danger"
-              *ngIf="userForm.controls.confirmaSenha.invalid && userForm.controls.confirmaSenha.touched">O campo Confirmar a Senha é
+              *ngIf="userForm.controls.confirmaSenha.invalid && userForm.controls.confirmaSenha.touched && userId === null">O campo Confirmar a Senha é
               obrigatório.</span>
           </div>
         </div>
