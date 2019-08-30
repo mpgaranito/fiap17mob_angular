@@ -58,7 +58,6 @@ export class UserListPageComponent implements OnInit {
     this.confirmationDialogService.confirm('Por Favor Confirme..', 'Você deseja remover ... ?')
       .then((confirmed) => {
         if (confirmed) {
-          console.log('User confirmed:', confirmed);
           if ( docID ) {
             this.goDeleteUser(docID);
           }

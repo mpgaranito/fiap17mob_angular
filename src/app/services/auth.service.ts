@@ -29,10 +29,9 @@ export class AuthService {
       .auth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
-        console.log('Sucesso!', value);
       })
       .catch(err => {
-        console.log('Erro..:', err.message);
+        console.error('Erro..:', err.message);
       });
   }
 
@@ -51,7 +50,6 @@ export class AuthService {
           .auth
           .signInWithEmailAndPassword(email, password)
           .then(value => {
-            console.log('Usuario logado' + value);
             this.writeUser(true);
             if (this.isLogged()) {
               this.router.navigate(['/userlist']);
@@ -59,12 +57,11 @@ export class AuthService {
             }
           })
           .catch(err => {
-            console.log('Erro..:', err.message);
+            console.error('Erro..:', err.message);
             this.writeUser(false);
             return false;
           });
         return false;
-        console.log('Apaguei' + result.id);
       }
     });
     return false;
@@ -79,7 +76,6 @@ export class AuthService {
   }
   isLogged(): boolean {
     const result = JSON.parse(localStorage.getItem('logado'));
-    console.log('Usuario' + result);
     return result;
   }
 }

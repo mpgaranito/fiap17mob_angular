@@ -25,12 +25,8 @@ export class LoginPageComponent implements OnInit {
 
   efetuaLogin(login: string, senha: string) {
     if ((login) || (senha)) {
-      console.log(login + '' + senha);
-      if (this.authService.login(login, senha)) {
-        console.log('this is:' + this.authService.isLogged());
-      } else {
+      if (!this.authService.login(login, senha)) {
         this.txtMensagem = 'Usuário e/ou senha inválido.';
-        console.log('this not is:' + this.authService.isLogged());
       }
     } else {
       this.txtMensagem = 'Favor preencher login e senha corretamente.';

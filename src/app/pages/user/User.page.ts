@@ -34,7 +34,6 @@ export class UserPageComponent implements OnInit {
     this.loading = true;
     this.usersService.getById(id)
       .subscribe((data: any) => {
-        console.log(data);
         const result = data[0];
         this.docId = this.getResult(result);
         Object.keys(result)
